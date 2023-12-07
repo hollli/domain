@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SecondLevelService implements Service {
-    private final ThirdLevelService thirdLevelService;
+    private final Service thirdLevelService;
 
     @Autowired
-    public SecondLevelService(@Qualifier("thirdLevelService") ThirdLevelService thirdLevelService) {
+    public SecondLevelService(Service thirdLevelService) {
         this.thirdLevelService = thirdLevelService;
     }
 

@@ -9,8 +9,8 @@ public class FirstLevelService implements Service {
     private final SecondLevelService secondLevelService;
 
     @Autowired
-    public FirstLevelService(@Qualifier("secondLevelService") SecondLevelService secondLevelService) {
-        this.secondLevelService = secondLevelService;
+    public FirstLevelService(@Qualifier("secondLevelService") Service secondLevelService) {
+        this.secondLevelService = (SecondLevelService) secondLevelService;
     }
 
     @Override

@@ -1,22 +1,25 @@
 package com.example.domain;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
 @Component
 public class App {
-    private final Service topLevelService;
+    private final Service firstLevelService;
+    private final Service secondLevelService;
 
-    @Autowired
-    public App(@Qualifier("firstLevelService") Service topLevelService) {
-        this.topLevelService = topLevelService;
+    public App(@Qualifier("firstLevelService") Service firstLevelService,
+               @Qualifier("secondLevelService") Service secondLevelService) {
+        this.firstLevelService = firstLevelService;
+        this.secondLevelService = secondLevelService;
     }
 
     public void run() {
-        topLevelService.performAction();
+        firstLevelService.performAction();
+        secondLevelService.performAction();
     }
+
     public static void main(String[] args) {
         try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class)) {
             App app = context.getBean(App.class);
