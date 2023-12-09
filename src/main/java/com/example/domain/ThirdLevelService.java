@@ -10,7 +10,6 @@ public class ThirdLevelService implements Service {
         this.message = null; // або встановіть значення за замовчуванням, якщо потрібно
     }
 
-    // Конструктор для введення значення message
     public ThirdLevelService(String message) {
         this.message = message;
     }
